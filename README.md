@@ -154,7 +154,7 @@ ML_Multiple_Sclerosis_Detection/
 
 1. **Clone the repository**
    ```bash
-   
+   https://github.com/RayidAlshammari/ML_Multiple_Sclerosis_Detection-
    ```
 
 2. **Create virtual environment** (recommended)
