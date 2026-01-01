@@ -1,11 +1,40 @@
-opencv-python==4.9.0.80
+# ============================================
+# ML-SDAIA-camp - Week 3 Requirements
+# Machine Learning Projects Dependencies
+# ============================================
+
+# Core Data Science Libraries
 numpy==1.26.4
 pandas==2.2.1
 matplotlib==3.8.3
 seaborn==0.13.2
+
+# Machine Learning
 scikit-learn==1.4.1.post1
+
+# Deep Learning (for Project 2 - Task 2: Noise Removal)
+tensorflow>=2.13.0
+keras>=2.13.0
+
+# Image Processing (for Project 1: MS Detection)
+opencv-python==4.9.0.80
 scikit-image==0.22.0
-plotly==5.19.0
 pillow==10.2.0
+
+# Visualization
+plotly==5.19.0
+
+# Jupyter Environment
 jupyter==1.0.0
 notebook==7.1.0
+ipykernel>=6.20.0
+
+# ============================================
+# Project-Specific Notes:
+# ============================================
+# Project 1 (MS Detection): Uses opencv-python, scikit-image, plotly
+# Project 2 (ML Challenge):
+#   - Task 1: Uses scikit-learn for multi-label classification
+#   - Task 2: Uses tensorflow/keras for noise removal
+# Project 3 (MNIST): Uses scikit-learn for classification
+# ============================================

@@ -1,407 +1,571 @@
-# Multiple Sclerosis Detection Using MRI and Machine Learning 🧠
+# Machine Learning Projects - Week 3
+## SDAIA Bootcamp | Machine Learning Week
 
-An AI-powered system for automated detection of Multiple Sclerosis (MS) from MRI brain scans using advanced machine learning techniques.
+<div align="center">
 
 ![Python](https://img.shields.io/badge/Python-3.12-blue.svg)
-![Scikit-Learn](https://img.shields.io/badge/scikit--learn-1.4.1-orange.svg)
+![Scikit-Learn](https://img.shields.io/badge/scikit--learn-1.4-orange.svg)
 ![Jupyter](https://img.shields.io/badge/Jupyter-Notebook-orange.svg)
+![TensorFlow](https://img.shields.io/badge/TensorFlow-2.x-FF6F00.svg)
+
+**Week 3 Projects - Machine Learning Week**
+**SDAIA AI Bootcamp**
+
+</div>
 
 ---
 
-##  Problem Statement
+## 📋 Overview
 
-Multiple Sclerosis (MS) is a chronic neurological disease affecting the central nervous system. Detecting MS lesions from MRI scans is:
-- Time-consuming and requires expert radiologists
-- Subject to human error and variability
-- Limited by availability of specialists
-
-This project aims to **automate MS detection** using machine learning to assist healthcare professionals with faster and more accurate diagnostics.
-
----
-
-##  Solution
-
-An end-to-end machine learning system that:
--  Classifies MRI brain images as **MS (disease)** or **Healthy**
--  Achieves high accuracy using ensemble learning methods
--  Provides comprehensive analysis and model comparison
--  Displays detailed evaluation metrics and visualizations
-
----
-
-##  Dataset
-
-- **Source:** [Multiple Sclerosis MRI Dataset - Kaggle](https://www.kaggle.com/datasets/buraktaci/multiple-sclerosis)
-- **Total Images:** 3,427 labeled MRI brain scans
-- **Classes:**
-  - Healthy (Control): Axial & Sagittal views
-  - MS (Disease): Axial & Sagittal views
-- **Format:** Grayscale MRI images
-- **Resolution:** Resized to 224×224 pixels
-
----
-
-##  Technical Approach
-
-### Feature Extraction
-
-Two complementary feature extraction techniques:
-
-1. **LBP (Local Binary Pattern)**
-   - Captures texture patterns in MRI scans
-   - Creates histogram of local binary patterns
-   - Effective for identifying tissue abnormalities
-
-2. **HOG (Histogram of Oriented Gradients)**
-   - Captures shape and edge information
-   - Detects structural changes in brain tissue
-   - Robust to variations in lighting/contrast
-
-### Data Processing Pipeline
-
-```
-Raw MRI Images (3,427 images)
-    ↓
-Preprocessing (Resize to 224×224, Grayscale)
-    ↓
-Feature Extraction (LBP + HOG → 6,094 features)
-    ↓
-Feature Scaling (StandardScaler)
-    ↓
-Dimensionality Reduction (PCA → 970 features, 95% variance)
-    ↓
-Data Split: Train (70%) / Validation (15%) / Test (15%)
-    ↓
-Model Training & Hyperparameter Tuning
-    ↓
-Validation & Test Evaluation
-```
-
-### Machine Learning Models
-
-Three models were trained and compared:
-
-1. **K-Nearest Neighbors (KNN)**
-   - Hyperparameter tuning with GridSearchCV
-   - Optimized: k, weights, distance metric
-
-2. **Support Vector Machine (SVM)**
-   - RBF kernel with hyperparameter tuning
-   - Optimized: C, gamma, kernel type
-   - **Selected as best individual model**
-
-3. **Voting Classifier (Ensemble)**
-   - Soft voting ensemble of KNN + SVM
-   - Combines strengths of both models
-   - Provides robust predictions
-
-### Evaluation Metrics
-
-**Performance Metrics:**
-- Accuracy Score (Train / Validation / Test)
-- Confusion Matrix with detailed breakdown (TP, TN, FP, FN)
-- Classification Report (Precision, Recall, F1-Score)
-- ROC Curve & AUC Score
-- False Positive Rate (FPR) & False Negative Rate (FNR)
-
-**Validation Methods:**
-- 10-Fold Cross-Validation
-- Learning Curves (Overfitting Detection)
-- Train/Validation/Test Split Evaluation
-
-**Error Analysis:**
-- Visual inspection of misclassified images
-- Error pattern analysis across models
-- Hard cases identification (images all models fail on)
+This repository contains **three comprehensive projects** developed during **Week 3** (Machine Learning Week) of the SDAIA AI Bootcamp. The projects cover diverse ML domains including medical image classification, multi-label classification, and noise removal using various machine learning techniques.
 
 ---
 
 ## 📂 Project Structure
 
 ```
-ML_Multiple_Sclerosis_Detection/
+ML-SDAIA-camp/
 │
-├── data/                          # MRI image dataset
-│   ├── Control Axial_crop/       # Healthy - Axial view
-│   ├── Control Saggital_crop/    # Healthy - Sagittal view
-│   ├── MS Axial_crop/            # MS - Axial view
-│   └── MS Saggital_crop/         # MS - Sagittal view
+├── 📁 ML_Multiple_Sclerosis_Detection/    # Project 1: MS Detection
+│   ├── data/                               # MRI image dataset
+│   │   ├── Control Axial_crop/            # Healthy - Axial view
+│   │   ├── Control Saggital_crop/         # Healthy - Sagittal view
+│   │   ├── MS Axial_crop/                 # MS - Axial view
+│   │   └── MS Saggital_crop/              # MS - Sagittal view
+│   ├── models/                             # Trained models
+│   │   ├── knn_model.pkl                  # KNN model
+│   │   ├── svm_model.pkl                  # SVM model
+│   │   ├── voting_model.pkl               # Voting Classifier
+│   │   ├── scaler.pkl                     # StandardScaler
+│   │   └── pca.pkl                        # PCA Transformer
+│   ├── app.ipynb                          # Main notebook
+│   ├── requirements.txt                   # Dependencies
+│   └── README.md                          # Project documentation
 │
-├── models/                        # Trained models (generated after running notebook)
-│   ├── knn_model.pkl             # Trained KNN model
-│   ├── svm_model.pkl             # Trained SVM model
-│   ├── voting_model.pkl          # Voting Classifier
-│   ├── scaler.pkl                # Feature scaler
-│   └── pca.pkl                   # PCA transformer
+├── 📁 ml-challenge-Rayid-alshammari/      # Project 2: ML Challenge
+│   ├── Task_1.ipynb                       # Task 1: Multi-Label Classification
+│   ├── Task_2.ipynb                       # Task 2: Noise Removal
+│   └── README.md                          # Project documentation
 │
-├── app.ipynb                      # Complete ML pipeline & analysis
-├── requirements.txt               # Python dependencies
-├── .gitignore                     # Git ignore file
-└── README.md                      # Project documentation (this file)
+├── 📁 ml-classification-Rayid-alshammari/ # Project 3: MNIST Classification
+│   ├── ML_Task_1_finale (1).ipynb         # Main classification notebook
+│   └── README.md                          # Project documentation
+│
+├── .venv/                                  # Virtual environment (excluded from Git)
+├── .gitignore                             # Git ignore file (all projects)
+├── requirements.txt                       # Python dependencies (all projects)
+└── README.md                              # This file - Comprehensive documentation
 ```
 
 ---
 
-##  Getting Started
+## 🎯 Projects Overview
+
+### 1️⃣ **Multiple Sclerosis Detection Using MRI**
+**Automated MS detection from brain MRI scans**
+
+<table>
+<tr>
+<td width="50%">
+
+#### 📌 Description
+An AI-powered system for automated detection of Multiple Sclerosis (MS) from MRI brain scans using advanced machine learning techniques.
+
+#### 🔧 Technologies Used
+- **Feature Extraction**: LBP + HOG
+- **Models**: KNN, SVM, Voting Classifier
+- **Preprocessing**: StandardScaler, PCA
+- **Dataset**: 3,427 MRI images
+
+#### 📊 Performance
+- **KNN**: ~93-94% accuracy
+- **SVM**: ~94-96% accuracy
+- **Voting Classifier**: ~94-96% accuracy ⭐
+
+</td>
+<td width="50%">
+
+#### 📁 Main Files
+
+**app.ipynb** (Main Notebook)
+- Load dataset (3,427 images)
+- Feature extraction (LBP + HOG → 6,094 features)
+- Train 3 different models
+- Comprehensive evaluation with Confusion Matrix
+- Cross Validation & Learning Curves
+- ROC Curves & Error Analysis
+- Save trained models
+
+**models/** (Saved Models)
+- All trained models ready for deployment
+- Preprocessors (Scaler, PCA) saved
+
+**requirements.txt** (in project root)
+- All dependencies listed in main `requirements.txt`
+- Includes scikit-learn, opencv-python, scikit-image
+- Plus visualization libraries (matplotlib, seaborn, plotly)
+
+</td>
+</tr>
+</table>
+
+**Key Features:**
+- 📊 Complete pipeline from raw images to predictions
+- 🎯 3-way split: Train (70%) / Validation (15%) / Test (15%)
+- 🔬 Advanced error analysis with FP/FN breakdown
+- 📈 Learning curves for overfitting detection
+- 🎨 Visual inspection of misclassified images
+
+---
+
+### 2️⃣ **Machine Learning Challenge**
+**Two-task ML challenge: Multi-label classification & Noise removal**
+
+<table>
+<tr>
+<td width="50%">
+
+#### 📌 Task 1: Multi-Label Classification
+**Simultaneous prediction of multiple labels**
+
+**Objective**: Classify MNIST digits into two categories simultaneously:
+- ✓ **Odd or Not** - Is the digit odd?
+- ✓ **Greater Than 5** - Is the digit > 5?
+
+**Models Used**:
+- Logistic Regression (~90% accuracy)
+- Random Forest (~97-98% accuracy) ⭐
+
+**File**: `Task_1.ipynb`
+
+**Pipeline**:
+1. Load MNIST dataset (70,000 images)
+2. Convert labels to multi-label format
+3. Train MultiOutputClassifier models
+4. Evaluate performance for each output separately
+
+**Results**:
+- Both labels predicted with high accuracy
+- Random Forest significantly outperforms Logistic Regression
+- Demonstrates effective multi-label classification
+
+</td>
+<td width="50%">
+
+#### 📌 Task 2: Noise Removal
+**ML-based image denoising**
+
+**Objective**: Remove noise from MNIST images and reconstruct clean versions
+
+**Technique Used**:
+- KNN Regressor for reconstruction
+- Gaussian noise (factor: 0.5)
+- Distance-weighted predictions
+
+**File**: `Task_2.ipynb`
+
+**Pipeline**:
+1. Add random Gaussian noise to images
+2. Train KNN Regressor on noisy-clean pairs
+3. Reconstruct clean images from noisy inputs
+4. Evaluate using MSE, MAE, R² metrics
+
+**Performance**:
+- **R² Score**: 0.7751
+- **RMSE**: 37.2
+- **MAE**: 13.37
+- **Classification Accuracy**: 74.89%
+
+**Includes**:
+- Visual comparison: Noisy → Denoised → Original
+- Comprehensive regression metrics
+
+</td>
+</tr>
+</table>
+
+---
+
+### 3️⃣ **MNIST Digit Classification**
+**Classic handwritten digit classification with model comparison**
+
+<table>
+<tr>
+<td width="50%">
+
+#### 📌 Description
+A comprehensive classification project on the MNIST dataset (0-9 handwritten digits) featuring three different models with detailed performance comparison.
+
+#### 🔧 Models Implemented
+
+**1. K-Nearest Neighbors (KNN)**
+- n_neighbors: 3
+- algorithm: auto
+- **Accuracy**: 97%
+- **Prediction Time**: 30.73 seconds
+
+**2. Random Forest Classifier** ⭐ **Best Overall**
+- n_estimators: 100
+- **Accuracy**: 97%
+- **Prediction Time**: 0.40 seconds
+- **Best balance** of speed and accuracy
+
+**3. Logistic Regression**
+- max_iter: 1000
+- **Accuracy**: 92%
+- **Prediction Time**: 0.04 seconds
+- **Fastest** but lower accuracy
+
+</td>
+<td width="50%">
+
+#### 📁 Main File
+
+**ML_Task_1_finale (1).ipynb**
+
+**Contents**:
+- Load MNIST dataset (70,000 images, 784 features)
+- Data split (80% train, 20% test)
+- Train 3 different classifiers
+- Comprehensive performance comparison:
+  - Accuracy scores
+  - Classification reports
+  - Prediction time analysis
+  - Precision, Recall, F1-Score per class
+
+**Detailed Metrics**:
+- Per-class performance (digits 0-9)
+- Confusion matrix analysis
+- Speed vs Accuracy trade-offs
+
+**Key Findings**:
+- **Random Forest**: Best choice for production (fast + accurate)
+- **Logistic Regression**: Best for real-time applications (fastest)
+- **KNN**: Accurate but too slow for large-scale deployment
+
+</td>
+</tr>
+</table>
+
+---
+
+## 🚀 Getting Started
 
 ### Prerequisites
 
 - Python 3.8 or higher
 - pip package manager
 - Jupyter Notebook
+- Virtual environment (recommended)
 
 ### Installation
 
-1. **Clone the repository**
-   ```bash
-   https://github.com/RayidAlshammari/ML_Multiple_Sclerosis_Detection-
-   ```
-
-2. **Create virtual environment** (recommended)
-   ```bash
-   python -m venv .venv
-   source .venv/bin/activate  # On Windows: .venv\Scripts\activate
-   ```
-
-3. **Install dependencies**
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-4. **Download the dataset**
-   - Download from [Kaggle](https://www.kaggle.com/datasets/buraktaci/multiple-sclerosis)
-   - Extract to `data/` directory
-
----
-
-##  Usage
-
-### Run the Jupyter Notebook
-
-Launch the notebook to train models and view analysis:
-
 ```bash
-jupyter notebook app.ipynb
+# 1. Clone the repository
+git clone <repository-url>
+cd ML-SDAIA-camp
+
+# 2. Create virtual environment
+python -m venv .venv
+
+# 3. Activate virtual environment
+# For Mac/Linux:
+source .venv/bin/activate
+# For Windows:
+.venv\Scripts\activate
+
+# 4. Install dependencies
+pip install -r requirements.txt
 ```
 
-The notebook contains **11 main sections** with detailed subsections:
+### Running the Projects
 
-### 1. Import Libraries
-   - All ML and visualization dependencies
+#### **Project 1: Multiple Sclerosis Detection**
 
-### 2. Load Dataset
-   - Load 3,427 MRI images from 4 folders
-   - Resize to 224×224 and convert to grayscale
+```bash
+cd ML_Multiple_Sclerosis_Detection
 
-### 3. Exploratory Data Analysis
-   - Class distribution visualization
-   - Sample MRI images display
+# Download dataset first from Kaggle
+# https://www.kaggle.com/datasets/buraktaci/multiple-sclerosis
+# Extract to data/ directory
 
-### 4. Feature Extraction
-   - LBP: 10 texture features
-   - HOG: 6,084 shape/edge features
-   - Combine: 6,094 total features
-   - Visualize extraction process
+# Launch notebook
+jupyter notebook app.ipynb
 
-### 5. Feature Scaling
-   - StandardScaler normalization
-   - Before/After visualization
+# Run all cells sequentially
+# Models will be saved to models/ directory
+```
 
-### 6. Dimensionality Reduction (PCA)
-   - Scree plot analysis
-   - Apply PCA (6,094 → 970 features, 95% variance)
+#### **Project 2: ML Challenge**
 
-### 7. Data Splitting
-   - **Train: 70%** (2,399 images)
-   - **Validation: 15%** (514 images)
-   - **Test: 15%** (514 images)
+```bash
+cd ml-challenge-Rayid-alshammari
 
-### 8. Model Training & Evaluation
-   - **KNN:** GridSearchCV → Validation → Test → Confusion Matrix
-   - **SVM:** GridSearchCV → Validation → Test → Confusion Matrix
-   - **Voting:** Ensemble → Validation → Test → Confusion Matrix
-   - **Comparison:** Train/Valid/Test performance graphs
+# Task 1: Multi-Label Classification
+jupyter notebook Task_1.ipynb
 
-### 9. Advanced Analysis
-   - **10-Fold Cross-Validation** on entire dataset
-   - **Learning Curves** for overfitting detection
-   - **ROC Curves** with AUC scores
+# Task 2: Noise Removal
+jupyter notebook Task_2.ipynb
 
-### 10. Detailed Error Analysis
-   - **Confusion Matrix Breakdown:** TP, TN, FP, FN for each model
-   - **Misclassified Images:** Visual inspection of errors
-   - **Hard Cases:** Images all models fail on
+# Dataset (MNIST) downloads automatically via scikit-learn
+```
 
-### 11. Save Models
-   - Export trained models (KNN, SVM, Voting)
-   - Save preprocessors (Scaler, PCA)
+#### **Project 3: MNIST Classification**
+
+```bash
+cd ml-classification-Rayid-alshammari
+
+# Launch notebook
+jupyter notebook "ML_Task_1_finale (1).ipynb"
+
+# Dataset downloads automatically via scikit-learn
+```
 
 ---
 
-##  Results
+## 📚 Required Libraries
 
-### Data Split
-- **Training Set:** 70% (2,399 images)
-- **Validation Set:** 15% (514 images)
-- **Test Set:** 15% (514 images)
+All dependencies are consolidated in the main `requirements.txt` file in the project root.
 
-### Model Performance
+### Installation
 
-| Model | Train | Validation | Test | 10-Fold CV |
-|-------|-------|------------|------|------------|
-| **KNN** | ~94-96% | ~93-95% | ~93-95% | ~91% ± 2% |
-| **SVM** | ~96-98% | ~94-96% | ~94-96% | ~92% ± 2% |
-| **Voting Classifier** | ~95-97% | ~94-96% | ~95-96% | ~92% ± 2% |
+```bash
+# Navigate to project root
+cd ML-SDAIA-camp
 
-*Note: Exact metrics vary based on random seed and hyperparameters*
+# Install all dependencies at once
+pip install -r requirements.txt
+```
 
-### Error Analysis Summary
+### Libraries Included
 
-**False Positive (FP):** Healthy patients wrongly classified as MS
-**False Negative (FN):** MS patients wrongly classified as Healthy (CRITICAL!)
+**Core Data Science:**
+- numpy==1.26.4
+- pandas==2.2.1
+- matplotlib==3.8.3
+- seaborn==0.13.2
 
-All models maintain:
-- **Low False Negative Rate** (critical for medical diagnosis)
-- **Good balance** between FPR and FNR
-- **Minimal overfitting** (validated via learning curves)
+**Machine Learning:**
+- scikit-learn==1.4.1.post1
 
-### Key Findings
+**Deep Learning:**
+- tensorflow>=2.13.0 (for Project 2 - Task 2)
+- keras>=2.13.0
 
-- **Feature Extraction:** LBP + HOG combination captures both texture and structure
-- **Dimensionality Reduction:** PCA reduces 84% of dimensions (6,094 → 970) while keeping 95% variance
-- **Best Individual Model:** SVM with RBF kernel
-- **Best Overall:** Voting Classifier for most robust and consistent predictions
-- **Generalization:** Learning curves show good generalization (minimal overfitting)
-- **Hard Cases:** ~1-2% of images are challenging for all models (require expert review)
+**Image Processing:**
+- opencv-python==4.9.0.80 (for Project 1)
+- scikit-image==0.22.0 (for Project 1)
+- pillow==10.2.0
 
----
+**Visualization:**
+- plotly==5.19.0
 
-##  Technologies Used
-
-- **Python 3.12:** Core programming language
-- **scikit-learn:** Machine learning models and evaluation
-- **OpenCV:** Image processing
-- **scikit-image:** Feature extraction (LBP, HOG)
-- **NumPy & Pandas:** Data manipulation
-- **Matplotlib & Seaborn:** Statistical visualization
-- **Plotly:** Interactive charts
-- **Jupyter Notebook:** Interactive development environment
+**Jupyter:**
+- jupyter==1.0.0
+- notebook==7.1.0
+- ipykernel>=6.20.0
 
 ---
 
+## 🎓 Learning Outcomes
 
-##  Notebook Structure
+### Machine Learning Concepts
 
-The `app.ipynb` notebook is organized as follows:
+- ✅ **Feature Engineering**: LBP (texture), HOG (edges)
+- ✅ **Dimensionality Reduction**: PCA (6,094 → 970 features, 95% variance)
+- ✅ **Classification Algorithms**: KNN, SVM, Random Forest, Logistic Regression
+- ✅ **Ensemble Methods**: Voting Classifier (soft voting)
+- ✅ **Multi-Label Learning**: MultiOutputClassifier
+- ✅ **Regression for Denoising**: KNN Regressor
+- ✅ **Hyperparameter Tuning**: GridSearchCV
+- ✅ **Model Evaluation**: Accuracy, Precision, Recall, F1-Score
 
-### 1. Import Libraries
-   - All required dependencies (scikit-learn, OpenCV, scikit-image, etc.)
+### Advanced Techniques
 
-### 2. Load Dataset
-   - Load 3,427 MRI images from 4 folders
-   - Preprocessing and resizing to 224×224
+- 📊 **Cross-Validation**: 10-fold CV for robust evaluation
+- 📈 **Learning Curves**: Detecting overfitting/underfitting
+- 🎯 **ROC Analysis**: AUC scores for model comparison
+- 🔍 **Error Analysis**: Confusion matrix, FP/FN rates
+- ⚖️ **Model Comparison**: Speed vs Accuracy trade-offs
+- 💾 **Model Persistence**: Saving/loading trained models with pickle
 
-### 3. Exploratory Data Analysis
-   - **3.1 Class Distribution:** Visualize balance between Healthy and MS classes
-   - **3.2 Sample Images:** Display representative MRI samples
+### Practical Skills
 
-### 4. Feature Extraction
-   - **4.1 LBP Features:** Extract 10 texture-based features
-   - **4.2 HOG Features:** Extract 6,084 edge/shape features
-   - **4.3 Combine Features:** Merge LBP + HOG (6,094 total features)
-   - **4.4 Visualize Features:** Show LBP and HOG extraction process
-
-### 5. Feature Scaling
-   - StandardScaler normalization
-   - Before/After visualization
-
-### 6. Dimensionality Reduction (PCA)
-   - **6.1 Variance Analysis:** Scree plot to determine optimal components
-   - **6.2 Apply PCA (95% Variance):** Reduce to 970 features
-
-### 7. Data Splitting (Train / Validation / Test)
-   - Train: 70% (2,399 images)
-   - Validation: 15% (514 images)
-   - Test: 15% (514 images)
-
-### 8. Model Training & Evaluation
-   - **8.1 KNN Model:**
-     - Hyperparameter tuning (GridSearchCV)
-     - Validation set evaluation
-     - Test set evaluation
-     - Confusion Matrix
-
-   - **8.2 SVM Model:**
-     - Hyperparameter tuning (GridSearchCV)
-     - Validation set evaluation
-     - Test set evaluation
-     - Confusion Matrix
-
-   - **8.3 Voting Classifier:**
-     - Ensemble training
-     - Validation set evaluation
-     - Test set evaluation
-     - Confusion Matrix
-
-   - **8.4 Model Comparison (Train / Valid / Test):**
-     - Performance comparison across all splits
-
-### 9. Advanced Analysis
-   - **9.1 Cross-Validation (10-Fold):** Robust performance estimation
-   - **9.2 Learning Curves (Overfitting Detection):** Analyze generalization
-   - **9.3 ROC Curves:** AUC comparison across models
-
-### 10. Detailed Error Analysis
-   - **10.1 Confusion Matrix Breakdown (FP, FN, TP, TN):**
-     - Detailed error analysis for each model
-     - FPR vs FNR comparison
-
-   - **10.2 Visualize Misclassified Images:**
-     - Display False Positives (Healthy → MS)
-     - Display False Negatives (MS → Healthy)
-
-   - **10.4 Common Hard Cases:**
-     - Identify images all models fail on
-     - Error pattern analysis
-
-### 11. Save Models
-   - Export all trained models (KNN, SVM, Voting)
-   - Save preprocessors (Scaler, PCA)
+- 🔧 **Data Preprocessing**: Scaling, normalization, noise injection
+- 📊 **Data Visualization**: Professional plots with matplotlib/seaborn
+- 🎨 **Image Processing**: OpenCV, scikit-image
+- 🧪 **Experimental Design**: Train/Valid/Test splits
+- 📝 **Documentation**: Writing clear, comprehensive READMEs
 
 ---
 
-##  Features
+## 📊 Results Summary
 
-### Comprehensive Analysis
-- **Data Visualization:** Sample images, class distribution, feature distributions
-- **Train/Valid/Test Split:** Proper model evaluation with 3-way split
-- **Model Comparison:** Performance across Train, Validation, and Test sets
-- **Confusion Matrices:** Detailed breakdown with TP, TN, FP, FN
-- **ROC Curves:** AUC scores for all models
-- **Classification Reports:** Precision, recall, F1-scores per class
+### Performance Overview
 
-### Advanced Validation
-- **10-Fold Cross-Validation:** Robust performance estimation
-- **Learning Curves:** Overfitting detection and model generalization analysis
-- **Error Analysis:** Visual inspection of misclassified images
-- **Hard Cases Identification:** Images that challenge all models
+| Project | Best Model | Accuracy | Special Notes |
+|---------|-----------|----------|---------------|
+| **MS Detection** | Voting Classifier | 94-96% | ✅ Low False Negatives (critical for medical) |
+| **Multi-Label (Task 1)** | Random Forest | 97-98% | ✅ Both labels predicted accurately |
+| **Noise Removal (Task 2)** | KNN Regressor | R²=0.78 | ✅ Good reconstruction quality |
+| **MNIST Classification** | Random Forest | 97% | ✅ Fast inference (0.40s) |
 
-### Medical Diagnosis Focus
-- **FPR vs FNR Analysis:** Critical for medical applications
-- **False Negatives Tracking:** Identifying missed MS cases (most critical)
-- **Error Pattern Analysis:** Understanding where and why models fail
-- **Visual Error Inspection:** See actual misclassified MRI images
+### Detailed Metrics
 
-### Reproducibility
-- **Fixed Random Seeds:** Consistent results across runs
-- **Saved Models:** Reusable trained models
-- **Complete Pipeline:** End-to-end workflow in one organized notebook
-- **No Code Duplication:** Clean, structured implementation
+#### Project 1: MS Detection
+- **Training Set**: 2,398 images (70%)
+- **Validation Set**: 514 images (15%)
+- **Test Set**: 515 images (15%)
+- **10-Fold CV**: 92% ± 2%
+- **ROC AUC**: 0.97-0.98
+- **False Negative Rate**: ~11% (minimized for medical safety)
 
---- 
+#### Project 2: Multi-Label Classification
+- **Label 1 (Odd/Not)**: 98% precision, 98% recall
+- **Label 2 (Greater Than 5)**: 97% precision, 97% recall
+- **Overall Performance**: Excellent for both tasks
+
+#### Project 3: MNIST Comparison
+- **KNN**: High accuracy but slow (30s prediction time)
+- **Random Forest**: Best balance (97% accuracy, 0.4s)
+- **Logistic Regression**: Fastest (0.04s) but 92% accuracy
+
+---
+
+## 🔍 Key Insights
+
+### Medical Image Classification (Project 1)
+- **Feature Engineering is Critical**: LBP + HOG combination captures both texture and structure
+- **PCA Reduces Complexity**: 84% dimension reduction while keeping 95% variance
+- **Ensemble Methods Excel**: Voting classifier provides most robust predictions
+- **Error Analysis Matters**: Visual inspection revealed challenging edge cases
+- **Medical Context**: Low FNR is more important than low FPR (don't miss sick patients)
+
+### Multi-Label Learning (Project 2, Task 1)
+- **Random Forest Dominates**: Significantly outperforms Logistic Regression
+- **Multi-Label is Effective**: Can predict multiple targets simultaneously
+- **Task Correlation**: Both tasks achieve similar high performance
+
+### Noise Removal (Project 2, Task 2)
+- **KNN Works for Regression**: Distance-weighted neighbors reconstruct clean images
+- **Trade-off Exists**: High R² but moderate pixel-level accuracy
+- **Visual Quality**: Denoised images are visually recognizable despite imperfect metrics
+
+### Model Selection (Project 3)
+- **Speed vs Accuracy**: Random Forest offers best balance
+- **Application Matters**: Choose model based on deployment constraints
+- **MNIST is Well-Solved**: All models achieve >90% accuracy
+
+---
+
+## 🛠️ Technical Challenges & Solutions
+
+### Challenge 1: Large Feature Dimensionality
+**Problem**: 6,094 features from LBP + HOG extraction
+**Solution**: PCA dimensionality reduction (95% variance retained)
+**Impact**: Faster training, reduced overfitting, maintained accuracy
+
+### Challenge 2: Class Imbalance Awareness
+**Problem**: Medical diagnosis requires minimizing false negatives
+**Solution**: Detailed FP/FN analysis, focus on FNR metric
+**Impact**: More appropriate model evaluation for medical context
+
+### Challenge 3: Convergence Warnings
+**Problem**: Logistic Regression convergence warnings
+**Solution**: Documented but acceptable (doesn't affect final performance)
+**Alternative**: Could increase max_iter or add feature scaling
+
+### Challenge 4: Slow KNN Predictions
+**Problem**: KNN takes 30s for predictions (too slow)
+**Solution**: Random Forest as production alternative
+**Impact**: 75x speedup with same accuracy
+
+---
+
+## 📈 Future Improvements
+
+### Project 1: MS Detection
+- [ ] Implement Deep Learning (CNN) for comparison
+- [ ] Add data augmentation for better generalization
+- [ ] Try transfer learning with pre-trained medical models
+- [ ] Implement grad-CAM for model interpretability
+- [ ] Explore 3D CNN for volumetric MRI analysis
+
+### Project 2: ML Challenge
+- [ ] Increase Logistic Regression max_iter to 2000+
+- [ ] Implement AutoEncoder for Task 2 (noise removal)
+- [ ] Add feature scaling preprocessing
+- [ ] Try other ensemble methods (Stacking, Boosting)
+- [ ] Experiment with different noise types
+
+### Project 3: MNIST Classification
+- [ ] Implement Neural Networks (MLP, CNN)
+- [ ] Add comprehensive GridSearchCV for all models
+- [ ] Create confusion matrix visualizations
+- [ ] Try dimensionality reduction (PCA) preprocessing
+- [ ] Implement ensemble of all three models
+
+---
+
+## ⚠️ Known Issues
+
+### Minor Issues
+1. **ConvergenceWarning** in Logistic Regression (Projects 2 & 3)
+   - **Status**: Documented, doesn't affect results
+   - **Fix**: Increase `max_iter` or add `StandardScaler`
+
+2. **Large file sizes** in .venv directory
+   - **Status**: Excluded from Git via .gitignore
+   - **Solution**: Each user creates their own virtual environment
+
+### Resolved Issues
+- ✅ Memory usage optimized with PCA
+- ✅ Prediction speed improved with Random Forest
+- ✅ Git repository cleaned (removed large data files)
+
+---
+
 ## 👨‍💻 Author
 
 **Rayid Alshammari**
 Data Scientist & AI Engineer
 
+**SDAIA AI Bootcamp - Week 3**
+Machine Learning Week
+2024
+
 ---
+
+## 📜 License
+
+This project is educational and developed as part of SDAIA AI Bootcamp.
+
+---
+
+## 🙏 Acknowledgments
+
+- **SDAIA** for the comprehensive AI bootcamp program
+- **Kaggle** for the Multiple Sclerosis MRI dataset
+- **scikit-learn** community for excellent ML library
+- **OpenML** for hosting MNIST dataset
+
+---
+
+## 📞 Contact & Support
+
+For questions or discussions about these projects:
+- Review the individual project README files for detailed documentation
+- Check the notebooks for inline comments and explanations
+- Refer to scikit-learn documentation for algorithm details
+
+---
+
+<div align="center">
+
+**🎯 SDAIA AI Bootcamp - Week 3**
+**Machine Learning Week**
+**Three comprehensive projects demonstrating ML fundamentals**
+
+⭐ **Star this repository if you found it helpful!** ⭐
+
+</div>

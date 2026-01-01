@@ -1,48 +1,110 @@
-# Virtual Environment
+# ============================================
+# ML-SDAIA-camp - Week 3 Git Ignore
+# SDAIA AI Bootcamp - Machine Learning Week
+# ============================================
+
+# ============================================
+# Virtual Environments
+# ============================================
 .venv/
 venv/
 env/
 ENV/
+env.bak/
+venv.bak/
 
+# ============================================
 # Python
+# ============================================
 __pycache__/
 *.py[cod]
 *$py.class
 *.so
 .Python
 
+# ============================================
 # Jupyter Notebook
+# ============================================
 .ipynb_checkpoints/
 *.ipynb_checkpoints
+*/.ipynb_checkpoints/*
 
-# Models (large files - can be regenerated from notebook)
+# ============================================
+# Machine Learning Models (Large Files)
+# ============================================
+# Can be regenerated from notebooks
+*.pkl
+*.h5
+*.joblib
+*.pt
+*.pth
+*.onnx
 models/*.pkl
 models/*.h5
 models/*.joblib
+ML_Multiple_Sclerosis_Detection/models/*.pkl
+ML_Multiple_Sclerosis_Detection/models/*.h5
 
-# IDE
+# ============================================
+# Datasets (Large Files)
+# ============================================
+# Download separately from Kaggle/OpenML
+data/
+*.csv
+*.zip
+*.tar.gz
+ML_Multiple_Sclerosis_Detection/data/
+**/data/
+
+# ============================================
+# IDEs and Editors
+# ============================================
 .vscode/
 .idea/
 *.swp
 *.swo
 *~
+.project
+.pydevproject
+.settings/
 
-# OS
+# ============================================
+# Operating System Files
+# ============================================
+# macOS
 .DS_Store
 .DS_Store?
 ._*
+.AppleDouble
+.LSOverride
 .Spotlight-V100
 .Trashes
-ehthumbs.db
+
+# Windows
 Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+[Dd]esktop.ini
+$RECYCLE.BIN/
 
-# Data (large dataset - downloaded from Kaggle)
-data/
+# Linux
+*~
+.directory
+.Trash-*
 
-# Logs
+# ============================================
+# Logs and Temporary Files
+# ============================================
 *.log
+*.tmp
+*.temp
+logs/
 
-# Distribution / packaging
+# ============================================
+# Distribution / Packaging
+# ============================================
 .Python
 build/
 develop-eggs/
@@ -56,19 +118,63 @@ parts/
 sdist/
 var/
 wheels/
+pip-wheel-metadata/
+share/python-wheels/
 *.egg-info/
 .installed.cfg
 *.egg
+MANIFEST
 
-# Unit test / coverage
+# ============================================
+# Testing / Coverage
+# ============================================
 htmlcov/
 .tox/
+.nox/
 .coverage
 .coverage.*
 .cache
 nosetests.xml
 coverage.xml
 *.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
 
-# Streamlit
+# ============================================
+# TensorFlow / Keras
+# ============================================
+*.h5
+*.hdf5
+checkpoints/
+tensorboard_logs/
+
+# ============================================
+# Streamlit (if used for deployment)
+# ============================================
 .streamlit/
+
+# ============================================
+# Environment Variables
+# ============================================
+.env
+.env.local
+.env.*.local
+
+# ============================================
+# Documentation Build Files
+# ============================================
+docs/_build/
+site/
+
+# ============================================
+# MyPy
+# ============================================
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# ============================================
+# Pyre
+# ============================================
+.pyre/
