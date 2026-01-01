@@ -530,34 +530,6 @@ pip install -r requirements.txt
 **Rayid Alshammari**
 Data Scientist & AI Engineer
 
-**SDAIA AI Bootcamp - Week 3**
-Machine Learning Week
-2024
-
----
-
-## 📜 License
-
-This project is educational and developed as part of SDAIA AI Bootcamp.
-
----
-
-## 🙏 Acknowledgments
-
-- **SDAIA** for the comprehensive AI bootcamp program
-- **Kaggle** for the Multiple Sclerosis MRI dataset
-- **scikit-learn** community for excellent ML library
-- **OpenML** for hosting MNIST dataset
-
----
-
-## 📞 Contact & Support
-
-For questions or discussions about these projects:
-- Review the individual project README files for detailed documentation
-- Check the notebooks for inline comments and explanations
-- Refer to scikit-learn documentation for algorithm details
-
 ---
 
 <div align="center">
