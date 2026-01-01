@@ -15,7 +15,7 @@
 
 ---
 
-## 📋 Overview
+##  Overview
 
 This repository contains **three comprehensive projects** developed during **Week 3** (Machine Learning Week) of the SDAIA AI Bootcamp. The projects cover diverse ML domains including medical image classification, multi-label classification, and noise removal using various machine learning techniques.
 
@@ -59,7 +59,7 @@ ML-SDAIA-camp/
 
 ---
 
-## 🎯 Projects Overview
+## Projects Overview
 
 ### 1️⃣ **Multiple Sclerosis Detection Using MRI**
 **Automated MS detection from brain MRI scans**
@@ -68,16 +68,16 @@ ML-SDAIA-camp/
 <tr>
 <td width="50%">
 
-#### 📌 Description
+#### Description
 An AI-powered system for automated detection of Multiple Sclerosis (MS) from MRI brain scans using advanced machine learning techniques.
 
-#### 🔧 Technologies Used
+#### Technologies Used
 - **Feature Extraction**: LBP + HOG
 - **Models**: KNN, SVM, Voting Classifier
 - **Preprocessing**: StandardScaler, PCA
 - **Dataset**: 3,427 MRI images
 
-#### 📊 Performance
+#### Performance
 - **KNN**: ~93-94% accuracy
 - **SVM**: ~94-96% accuracy
 - **Voting Classifier**: ~94-96% accuracy ⭐
@@ -110,22 +110,22 @@ An AI-powered system for automated detection of Multiple Sclerosis (MS) from MRI
 </table>
 
 **Key Features:**
-- 📊 Complete pipeline from raw images to predictions
-- 🎯 3-way split: Train (70%) / Validation (15%) / Test (15%)
-- 🔬 Advanced error analysis with FP/FN breakdown
-- 📈 Learning curves for overfitting detection
-- 🎨 Visual inspection of misclassified images
+-  Complete pipeline from raw images to predictions
+-  3-way split: Train (70%) / Validation (15%) / Test (15%)
+-  Advanced error analysis with FP/FN breakdown
+-  Learning curves for overfitting detection
+-  Visual inspection of misclassified images
 
 ---
 
-### 2️⃣ **Machine Learning Challenge**
+### **Machine Learning Challenge**
 **Two-task ML challenge: Multi-label classification & Noise removal**
 
 <table>
 <tr>
 <td width="50%">
 
-#### 📌 Task 1: Multi-Label Classification
+#### Task 1: Multi-Label Classification
 **Simultaneous prediction of multiple labels**
 
 **Objective**: Classify MNIST digits into two categories simultaneously:
@@ -152,7 +152,7 @@ An AI-powered system for automated detection of Multiple Sclerosis (MS) from MRI
 </td>
 <td width="50%">
 
-#### 📌 Task 2: Noise Removal
+#### Task 2: Noise Removal
 **ML-based image denoising**
 
 **Objective**: Remove noise from MNIST images and reconstruct clean versions
@@ -193,10 +193,10 @@ An AI-powered system for automated detection of Multiple Sclerosis (MS) from MRI
 <tr>
 <td width="50%">
 
-#### 📌 Description
+####  Description
 A comprehensive classification project on the MNIST dataset (0-9 handwritten digits) featuring three different models with detailed performance comparison.
 
-#### 🔧 Models Implemented
+#### Models Implemented
 
 **1. K-Nearest Neighbors (KNN)**
 - n_neighbors: 3
@@ -249,7 +249,7 @@ A comprehensive classification project on the MNIST dataset (0-9 handwritten dig
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -323,7 +323,7 @@ jupyter notebook "ML_Task_1_finale (1).ipynb"
 
 ---
 
-## 📚 Required Libraries
+## Required Libraries
 
 All dependencies are consolidated in the main `requirements.txt` file in the project root.
 
@@ -367,7 +367,7 @@ pip install -r requirements.txt
 
 ---
 
-## 🎓 Learning Outcomes
+## Learning Outcomes
 
 ### Machine Learning Concepts
 
@@ -382,24 +382,24 @@ pip install -r requirements.txt
 
 ### Advanced Techniques
 
-- 📊 **Cross-Validation**: 10-fold CV for robust evaluation
-- 📈 **Learning Curves**: Detecting overfitting/underfitting
-- 🎯 **ROC Analysis**: AUC scores for model comparison
-- 🔍 **Error Analysis**: Confusion matrix, FP/FN rates
-- ⚖️ **Model Comparison**: Speed vs Accuracy trade-offs
-- 💾 **Model Persistence**: Saving/loading trained models with pickle
+-  **Cross-Validation**: 10-fold CV for robust evaluation
+-  **Learning Curves**: Detecting overfitting/underfitting
+-  **ROC Analysis**: AUC scores for model comparison
+-  **Error Analysis**: Confusion matrix, FP/FN rates
+-  **Model Comparison**: Speed vs Accuracy trade-offs
+-  **Model Persistence**: Saving/loading trained models with pickle
 
 ### Practical Skills
 
-- 🔧 **Data Preprocessing**: Scaling, normalization, noise injection
-- 📊 **Data Visualization**: Professional plots with matplotlib/seaborn
-- 🎨 **Image Processing**: OpenCV, scikit-image
-- 🧪 **Experimental Design**: Train/Valid/Test splits
-- 📝 **Documentation**: Writing clear, comprehensive READMEs
+-  **Data Preprocessing**: Scaling, normalization, noise injection
+-  **Data Visualization**: Professional plots with matplotlib/seaborn
+-  **Image Processing**: OpenCV, scikit-image
+-  **Experimental Design**: Train/Valid/Test splits
+-  **Documentation**: Writing clear, comprehensive READMEs
 
 ---
 
-## 📊 Results Summary
+## Results Summary
 
 ### Performance Overview
 
@@ -432,7 +432,7 @@ pip install -r requirements.txt
 
 ---
 
-## 🔍 Key Insights
+## Key Insights
 
 ### Medical Image Classification (Project 1)
 - **Feature Engineering is Critical**: LBP + HOG combination captures both texture and structure
@@ -458,7 +458,7 @@ pip install -r requirements.txt
 
 ---
 
-## 🛠️ Technical Challenges & Solutions
+##  Technical Challenges & Solutions
 
 ### Challenge 1: Large Feature Dimensionality
 **Problem**: 6,094 features from LBP + HOG extraction
@@ -479,49 +479,6 @@ pip install -r requirements.txt
 **Problem**: KNN takes 30s for predictions (too slow)
 **Solution**: Random Forest as production alternative
 **Impact**: 75x speedup with same accuracy
-
----
-
-## 📈 Future Improvements
-
-### Project 1: MS Detection
-- [ ] Implement Deep Learning (CNN) for comparison
-- [ ] Add data augmentation for better generalization
-- [ ] Try transfer learning with pre-trained medical models
-- [ ] Implement grad-CAM for model interpretability
-- [ ] Explore 3D CNN for volumetric MRI analysis
-
-### Project 2: ML Challenge
-- [ ] Increase Logistic Regression max_iter to 2000+
-- [ ] Implement AutoEncoder for Task 2 (noise removal)
-- [ ] Add feature scaling preprocessing
-- [ ] Try other ensemble methods (Stacking, Boosting)
-- [ ] Experiment with different noise types
-
-### Project 3: MNIST Classification
-- [ ] Implement Neural Networks (MLP, CNN)
-- [ ] Add comprehensive GridSearchCV for all models
-- [ ] Create confusion matrix visualizations
-- [ ] Try dimensionality reduction (PCA) preprocessing
-- [ ] Implement ensemble of all three models
-
----
-
-## ⚠️ Known Issues
-
-### Minor Issues
-1. **ConvergenceWarning** in Logistic Regression (Projects 2 & 3)
-   - **Status**: Documented, doesn't affect results
-   - **Fix**: Increase `max_iter` or add `StandardScaler`
-
-2. **Large file sizes** in .venv directory
-   - **Status**: Excluded from Git via .gitignore
-   - **Solution**: Each user creates their own virtual environment
-
-### Resolved Issues
-- ✅ Memory usage optimized with PCA
-- ✅ Prediction speed improved with Random Forest
-- ✅ Git repository cleaned (removed large data files)
 
 ---
 
